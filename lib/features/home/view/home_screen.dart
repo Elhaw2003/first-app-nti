@@ -2,6 +2,7 @@ import 'package:ffffiff/features/daetails/view/details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/assets.dart';
+import '../../collection/view/collection_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,8 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
             height: 24,
@@ -82,18 +83,23 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Column(
               children: [
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Top Collection 🔥",
+                    const Text("Top Collection 🔥",
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w500,
                             fontSize: 18)),
-                    Icon(
-                      Icons.more_horiz_outlined,
-                      color: Color(0xff979796),
-                      size: 30,
+                    IconButton(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (c){
+                          return const CollectionScreen();
+                        }));
+                      },
+                      icon: const Icon(Icons.more_horiz_outlined,
+                        color: Color(0xff979796),
+                        size: 30,),
                     )
                   ],
                 ),
